@@ -1,0 +1,2934 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+ExtentReports Library 2.40.0 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+Documentation: http://extentreports.relevantcodes.com 
+-->
+<meta http-equiv='content-type' content='text/html; charset=UTF-8' /> 
+<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+<meta name='robots' content='noodp, noydir' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+<title>
+ExtentReports 2.0
+</title>
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/css/materialize.min.css' type='text/css'>
+<link href='https://cdn.rawgit.com/noelboss/featherlight/1.3.4/release/featherlight.min.css' type='text/css' rel='stylesheet' />
+<link href='http://cdn.rawgit.com/anshooarora/extentreports/c52c8b4c4cf7853d658daeb1cb09207ed5a667c6/cdn/extent.css' type='text/css' rel='stylesheet' />
+
+<style>
+
+
+
+
+
+</style>
+</head>
+<body class='extent'>
+<!-- nav -->
+<nav>
+<ul id='slide-out' class='side-nav fixed'>
+<li class='logo'>
+<a class='logo-content' href='http://extentreports.relevantcodes.com'><span>ExtentReports</span></a>
+<a class='menu-toggle right'><i class='mdi-navigation-menu'></i></a>
+</li> 
+<li class='analysis waves-effect active'><a href='#!' class='test-view'><i class='mdi-action-dashboard'></i>Test Details</a></li>
+<li class='analysis waves-effect'><a href='#!' class='categories-view'><i class='mdi-maps-local-offer'></i>Categories</a></li>
+<li class='analysis waves-effect'><a href='#!' class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a></li>
+<li class='analysis waves-effect'><a href='#!' class='testrunner-logs-view'><i class='mdi-action-assignment'></i>TestRunner Logs</a></li>
+</ul>
+<a href='#' data-activates='slide-out' class='button-collapse'><i class='mdi-navigation-menu medium'></i></a>
+<span class='report-name'>Automation Report</span> <span class='report-headline'></span>
+<ul class='right hide-on-med-and-down nav-right'>
+<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $(".theme-selector").click();' title='Click to toggle dark theme. To enable by default, use js configuration $(".theme-selector").click();'>
+<i class='mdi-hardware-desktop-windows'></i>
+</li>
+<li>
+<span class='suite-started-time'>2018-06-07 15:16:49</span>
+</li>
+<li>
+<span>v2.40.0</span>
+</li>
+</ul>
+</nav>
+<!-- /nav -->
+
+<!-- container -->
+<div class='container'>
+
+<!-- dashboard -->
+<div id='dashboard-view' class='row'>
+<div class='time-totals'>
+<div class='col l2 m4 s6'>
+<div class='card suite-total-tests'> 
+<span class='panel-name'>Total Tests</span> 
+<span class='total-tests'> <span class='panel-lead'></span> </span> 
+</div> 
+</div>
+<div class='col l2 m4 s6'>
+<div class='card suite-total-steps'> 
+<span class='panel-name'>Total Steps</span> 
+<span class='total-steps'> <span class='panel-lead'></span> </span> 
+</div> 
+</div>
+<div class='col l4 m4 s12'>
+<div class='card suite-total-steps'> 
+<span class='panel-name'>Total Time Taken</span> 
+<span class='suite-total-time-taken panel-lead'>0h 20m 18s+970ms</span> 
+</div> 
+</div>
+<div class='col l2 m6 s6 suite-start-time'>
+<div class='card green-accent'> 
+<span class='panel-name'>Start</span> 
+<span class='panel-lead suite-started-time'>2018-06-07 14:56:30</span> 
+</div> 
+</div>
+<div class='col l2 m6 s6 suite-end-time'>
+<div class='card pink-accent'> 
+<span class='panel-name'>End</span> 
+<span class='panel-lead suite-ended-time'>2018-06-07 15:16:49</span> 
+</div> 
+</div>
+</div>
+<div class='charts'>
+<div class='col s12 m6 l4 fh'> 
+<div class='card-panel'> 
+<div>
+<span class='panel-name'>Tests View</span>
+</div> 
+<div class='panel-setting modal-trigger test-count-setting right'>
+<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+</div> 
+<div class='chart-box'>
+<canvas class='text-centered' id='test-analysis'></canvas>
+</div> 
+<div>
+<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+</div> 
+<div>
+<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+</div> 
+</div> 
+</div> 
+<div class='col s12 m6 l4 fh'> 
+<div class='card-panel'> 
+<div>
+<span class='panel-name'>Steps View</span>
+</div> 
+<div class='panel-setting modal-trigger step-status-filter right'>
+<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+</div> 
+<div class='chart-box'>
+<canvas class='text-centered' id='step-analysis'></canvas>
+</div> 
+<div>
+<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed</span>
+</div> 
+<div>
+<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+</div> 
+</div> 
+</div>
+<div class='col s12 m12 l4 fh'> 
+<div class='card-panel'> 
+<span class='panel-name'>Pass Percentage</span> 
+<span class='pass-percentage panel-lead'></span> 
+<div class='progress light-blue lighten-3'> 
+<div class='determinate light-blue'></div> 
+</div> 
+</div> 
+</div>
+</div>
+<div class='system-view'>
+<div class='col l4 m12 s12'>
+<div class='card-panel'>
+<span class='label info outline right'>Environment</span>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OS</td>
+<td>Windows 10</td>
+</tr>
+<tr>
+<td>User Name</td>
+<td>AnkurP</td>
+</tr>
+<tr>
+<td>Java Version</td>
+<td>1.8.0_161</td>
+</tr>
+<tr>
+<td>Host Name</td>
+<td>RSLPTP1013</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class='category-summary-view'>
+<div class='col l4 m6 s12'>
+<div class='card-panel'>
+<span class='label info outline right'>Categories</span>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- /dashboard -->
+
+<!-- tests -->
+<div id='test-view' class='row'>
+<div class='col s5'>
+<div class='card-panel heading'>
+<h5>Tests</h5>
+</div>
+<div class='card-panel filters'>
+<div>
+<a data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#' class='dropdown-button button tests-toggle'><i class='mdi-action-subject icon'></i></a>
+<ul id='tests-toggle' class='dropdown-content'>
+<li class='pass'><a href='#!'>Pass</a></li>
+<li class='fail'><a href='#!'>Fail</a></li>
+<li class='skip'><a href='#!'>Skip</a></li>
+<li class='divider'></li>
+<li class='clear'><a href='#!'>Clear Filters</a></li>
+</ul>
+</div>
+<div>
+<a id='clear-filters' alt='Clear Filters' title='Clear Filters'><i class='mdi-navigation-close icon'></i></a>
+</div>
+<div>&nbsp;&middot;&nbsp;</div>
+<div>
+<a id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'><i class='mdi-action-track-changes icon'></i></a>
+</div>
+<div>
+<a id='refreshCharts' alt='Refresh Charts on Filter' title='Refresh Charts on Filter' class='enabled'><i class='mdi-navigation-refresh icon'></i></i></a>
+</div>
+<div>&nbsp;&middot;</div>
+<div class='search' alt='Search tests' title='Search tests'>
+<div class='input-field left'>
+<input id='searchTests' type='text' class='validate' placeholder='Search tests...'>
+</div>
+<i class='mdi-action-search icon'></i>
+</div>
+</div>
+<div class='card-panel no-padding-h no-padding-v no-margin-v '>
+<div class='wrapper'>
+<ul id='test-collection' class='test-collection'>
+<li class='collection-item test displayed active fail'>
+<div class='test-head'>
+<span class='test-name'>Login </span>
+<span class='test-status label right capitalize outline fail'>fail</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 14:56:31</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 14:58:09</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 37s+907ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:56:40</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:57:23</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:57:23</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>14:57:43</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Object not found in page. Input operation [AnkurAdmin] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607145743.png</span></td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>14:58:05</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Object not found in page. Input operation [1234@Asd] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607145805.png</span></td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>14:58:05</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Request Card Token </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 14:58:09</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 14:58:58</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 48s+503ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:09</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:15</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[32]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:22</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:27</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:33</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:40</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:47</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Update Card Token - Status </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 14:58:58</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 14:59:08</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 10s+265ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:58:58</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Update Card Token - Expiry Date </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 14:59:08</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:00:03</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 55s+50ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:08</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[52]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:14</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[18]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:21</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[20]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:27</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[22]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:33</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[24]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:39</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[26]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:46</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>14:59:52</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Request Check Token </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:00:03</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:00:40</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 36s+382ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:03</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[24]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:10</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[26]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:15</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:22</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:29</td>
+<td class='step-name'>TokenManager_RequestToken::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [TokenManager_RequestToken] was started</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Update Check Token </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:00:40</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:00:50</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 10s+267ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:40</td>
+<td class='step-name'>TokenManager_UpdateToken::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [TokenManager_UpdateToken] was started</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Logout </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:00:50</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:01:11</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 21s+347ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:50</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:00:56</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:01:02</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:09</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:09</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Login </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:01:12</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:02:01</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 48s+940ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:21</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:25</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:01:25</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:25</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Entered [AnkurAdmin] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:25</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Entered [1234@Asd] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:01:57</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>ODFI - Add </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:02:01</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:02:46</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 44s+949ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:01</td>
+<td class='step-name'>ODFI_Add::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [ODFI_Add] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:02</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>lnkODFIManagement[id::odfiManagement]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:02</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>lnkODFIAdd[id::odfiAdd]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:09</td>
+<td class='step-name'>ODFI_Add::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [ODFI_Add] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:09</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtODFICode[id::odfiCode]::Entered [209] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:10</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtODFIName[id::odfiName]::Entered [ODFI Test 1] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:10</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtCompanyID[id::companyId]::Entered [2902] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:10</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtCutoffTime[id::cutoffTime]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:11</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtImmediateDestination[id::immediateDestination]::Entered [1111111111] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:11</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtImmediateOrigin[id::immediateOrigin]::Entered [222222222] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:11</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtImmediateDestinationName[id::immediateDestinationName]::Entered [Foster City] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:12</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtImmediateOriginName[id::immediateOriginName]::Entered [Milpitas] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:12</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtCompanyName[id::companyName]::Entered [RS Software] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:12</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtCompanyDiscretionaryData[id::companyDiscretionaryData]::Entered [Sector V] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:13</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtClearing[id::clearingRoutingNumber]::Entered [011000015] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:13</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtClearingAccountNo.[id::clearingAccountNumber]::Entered [12345] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:13</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtIncome[id::incomeRoutingNumber]::Entered [011000015] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:14</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtIncomeAccountNo.[id::incomeAccountNumber]::Entered [12345] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:14</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtFloater[id::floaterRoutingNumber]::Entered [011000015] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:14</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>txtFloaterAccountNo.[id::floaterAccountNumber]::Entered [12345] to edit box.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:25</td>
+<td class='step-name'>ODFI_Add::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [ODFI_Add] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:26</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>btnAdd[xpath:://button[text()='Add']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:32</td>
+<td class='step-name'>ODFI_Add::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [ODFI_Add] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:33</td>
+<td class='step-name'>ODFI_Add::VerifyText</td>
+<td class='step-details'>txtNotificationMsg[xpath:://div[@class='modal-body']]::Expected Value ->[ODFI successfully saved.] , Actual Value -> [ODFI successfully saved.]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:39</td>
+<td class='step-name'>ODFI_Add::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [ODFI_Add] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:40</td>
+<td class='step-name'>ODFI_Add::InputData</td>
+<td class='step-details'>btnx[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>ODFI - Update </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:02:46</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:04:09</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 22s+957ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:46</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:47</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>lnkODFIList[id::odfiList]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:02:53</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[20]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:02:54</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>ddlRecordsPerPage[xpath:://div[@class='perpage-selection']/select]::The item 50 was selected from drop downlist.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:00</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:01</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyODFICode[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']]::Expected Value ->[209] , Actual Value -> [209]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:01</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyODFIName[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[2]]::Expected Value ->[ODFI Test 1] , Actual Value -> [ODFI Test 1]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:01</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyCompanyID[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[3]]::Expected Value ->[2902] , Actual Value -> [2902]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:01</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyCutoffTime[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[4]]::Expected Value ->[15:02] , Actual Value -> [15:02]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:07</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:08</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>btnViewDetails[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[5]]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:14</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:15</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>txtODFIName[id::odfiName]::Entered [ODFI Test 2] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:15</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>txtCompanyID[id::companyId]::Entered [2251] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:15</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>txtCutoffTime[id::cutoffTime]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:24</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:24</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>btnSave[xpath:://button[text()='Save']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:31</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:31</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>txtNotificationMsg[xpath:://div[@class='modal-body']]::Expected Value ->[ODFI successfully saved.] , Actual Value -> [ODFI successfully saved.]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:37</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:38</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>btnx[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:48</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:49</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>lnkODFIList[id::odfiList]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:03:55</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[20]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:03:56</td>
+<td class='step-name'>ODFI_Update::InputData</td>
+<td class='step-details'>ddlRecordsPerPage[xpath:://div[@class='perpage-selection']/select]::The item 50 was selected from drop downlist.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:02</td>
+<td class='step-name'>ODFI_Update::Begin InputData</td>
+<td class='step-details'>RowNumber[18]::Input data for business component [ODFI_Update] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:02</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyODFICode[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']]::Expected Value ->[209] , Actual Value -> [209]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:03</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyODFIName[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[2]]::Expected Value ->[ODFI Test 2] , Actual Value -> [ODFI Test 2]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:03</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyCompanyID[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[3]]::Expected Value ->[2251] , Actual Value -> [2251]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:03</td>
+<td class='step-name'>ODFI_Update::VerifyText</td>
+<td class='step-details'>verifyCutoffTime[xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='209']/../../td[4]]::Expected Value ->[15:03] , Actual Value -> [15:03]</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>Logout </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:04:09</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:04:20</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 11s+21ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:09</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:10</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkArrow[xpath:://p[@class='name']/span[@class='arrow']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:12</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:13</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkLogOut[xpath:://a[text()='Log Out']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:15</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:15</td>
+<td class='step-name'>Logout_Logout::VerifyText</td>
+<td class='step-details'>txtNotification[id::messageText]::Expected Value ->[User logged out successfully.] , Actual Value -> [User logged out successfully.]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:17</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:18</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active fail'>
+<div class='test-head'>
+<span class='test-name'>FMS - Private - Decline </span>
+<span class='test-status label right capitalize outline fail'>fail</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:04:21</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:05:50</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 29s+197ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:30</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:33</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:33</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:33</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Entered [AnkurAdmin] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:33</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Entered [1234@Asd] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:42</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:46</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:46</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:51</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:51</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>ddlMID[xpath:://div[@id='header-mid']/button[2]]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:51</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>selectMID1[xpath:://div[@id='header-mid']/ul/li[*]/a[text()='9674134323']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:04:56</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:04:56</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkCardNumber[xpath:://a[text()='CardNumber']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:01</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:01</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>txtCardNumber[id::entity2]::Entered [5499740000000057] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:02</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>rdDecline[id::declineOrReview1]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:02</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnAddEntityValue[xpath:://button[text()='Add Entity Value']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:06</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:05:07</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule added successfully] , Actual Value -> [Duplicate record '549974******0057']:: Screenshot: <span style='font-weight:bold;'>20180607150507.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:11</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:12</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:17</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:17</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>verifyValue[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']]::Expected Value ->[549974******0057] , Actual Value -> [549974******0057]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:17</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>verifyAction[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[4]/span]::Expected Value ->[Decline] , Actual Value -> [Decline]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:22</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:22</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>chkSelect[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[1]/span[2]/label/input]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:23</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnDelete[xpath:://button[text()='Delete']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:27</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:28</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnConfirm[xpath:://button[text()='Confirm']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:32</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:32</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule deleted successfully] , Actual Value -> [Rule deleted successfully]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:37</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:37</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:42</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:42</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkArrow[xpath:://p[@class='name']/span[@class='arrow']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:44</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:45</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkLogOut[xpath:://a[text()='Log Out']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:05:47</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:47</td>
+<td class='step-name'>Logout_Logout::VerifyText</td>
+<td class='step-details'>txtNotification[id::messageText]::Expected Value ->[User logged out successfully.] , Actual Value -> [User logged out successfully.]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:49</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:05:50</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active pass'>
+<div class='test-head'>
+<span class='test-name'>FMS - Private - Review </span>
+<span class='test-status label right capitalize outline pass'>pass</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:05:51</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:07:24</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 1m 33s+652ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:00</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:03</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:03</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:03</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Entered [AnkurAdmin] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:03</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Entered [1234@Asd] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:13</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:17</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:18</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:22</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:23</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>ddlMID[xpath:://div[@id='header-mid']/button[2]]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:23</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>selectMID1[xpath:://div[@id='header-mid']/ul/li[*]/a[text()='9674134323']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:27</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:28</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkCardNumber[xpath:://a[text()='CardNumber']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:32</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[18]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:33</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>txtCardNumber[id::entity2]::Entered [5499740000000057] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:33</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>rdReview[id::declineOrReview2]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:34</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnAddEntityValue[xpath:://button[text()='Add Entity Value']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:38</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:39</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule added successfully] , Actual Value -> [Rule added successfully]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:44</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:44</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:49</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[20]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:50</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>verifyValue[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']]::Expected Value ->[549974******0057] , Actual Value -> [549974******0057]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:50</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>verifyAction[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[4]/span]::Expected Value ->[Review] , Actual Value -> [Review]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:06:54</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:55</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>chkSelect[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[1]/span[2]/label/input]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:06:56</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnDelete[xpath:://button[text()='Delete']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:00</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:01</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnConfirm[xpath:://button[text()='Confirm']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:05</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:05</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule deleted successfully] , Actual Value -> [Rule deleted successfully]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:10</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:10</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:15</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:15</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkArrow[xpath:://p[@class='name']/span[@class='arrow']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:17</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:19</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkLogOut[xpath:://a[text()='Log Out']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:21</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:21</td>
+<td class='step-name'>Logout_Logout::VerifyText</td>
+<td class='step-details'>txtNotification[id::messageText]::Expected Value ->[User logged out successfully.] , Actual Value -> [User logged out successfully.]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:23</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:24</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active fail'>
+<div class='test-head'>
+<span class='test-name'>Verify that Txn gets Declined with a Card which is Declined </span>
+<span class='test-status label right capitalize outline fail'>fail</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:07:25</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:10:39</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 3m 13s+921ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:34</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:38</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:38</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:38</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Entered [AnkurAdmin] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:39</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Entered [1234@Asd] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:52</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:07:56</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:07:57</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:01</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:02</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>ddlMID[xpath:://div[@id='header-mid']/button[2]]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:02</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>selectMID1[xpath:://div[@id='header-mid']/ul/li[*]/a[text()='9674134323']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:07</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:08</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkCardNumber[xpath:://a[text()='CardNumber']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:12</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:13</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>txtCardNumber[id::entity2]::Entered [5499740000000057] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:13</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>rdDecline[id::declineOrReview1]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:14</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnAddEntityValue[xpath:://button[text()='Add Entity Value']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:19</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:19</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule added successfully] , Actual Value -> [Rule added successfully]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:24</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:25</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:29</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:30</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>lnkPayments[id::payments]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:30</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>lnkVirtualTerminalSale[id::virtualTerminalSale]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:37</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:38</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdProcessTxnViaCardDetails[id::processUsingCardDetails]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:38</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdGenerateToken-Yes[id::generateToken1]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:39</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtAmount[id::transactionAmount]::Entered [150.00] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:39</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlCurrency[xpath:://div[@id='currencyCode1']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:39</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectCurrencyUSD[xpath:://div[@id='currencyCode1']/ul/li[*]/a[text()='USD']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:39</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlDataSource[xpath:://div[@id='cardDataSource']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:40</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectDataSourceMail[xpath:://div[@id='cardDataSource']/ul/li[*]/a[text()='MAIL']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:40</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCardNumber[id::cardNumber]::Entered [5499740000000057] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:41</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCardExpirationDate[id::expirationDate]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:41</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectYear2020[xpath:://*[text()='2020']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:42</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectMonthDec[xpath:://*[text()='Dec']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:42</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCustomerName[id::cardHolderName]::Entered [Suman] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:42</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCVV2[id::cvv2]::Entered [999] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:43</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtTip[id::tip]::Entered [10] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:43</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingAddress[id::billingAddress]::Entered [123, ABC] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:44</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingZip[id::billingZip]::Entered [94404] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:44</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingCity[id::billingCity]::Entered [FC] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:44</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlBillingState[xpath:://div[@id='billingState']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:45</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectBillingState-California[xpath:://div[@id='billingState']/ul/li[*]/a[text()='CALIFORNIA']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:45</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdIsRecurring[id::isRecurring]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:45</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlBillingType[xpath:://div[@id='billingTypeList']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:46</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectBillingType-Installment[xpath:://div[@id='billingTypeList']/ul/li[*]/a[text()='INSTALLMENT']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:46</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCurrentPaymentCount[id::currentPaymentCount]::Entered [10] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:47</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtPaymentCount[id::paymentCount]::Entered [15] to edit box.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:51</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:08:54</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>btnSubmit[xpath:://button[text()='Submit']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:08:59</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:09:02</td>
+<td class='step-name'>FMS_VTSale::VerifySubStringText</td>
+<td class='step-details'>verifyModalWindowTitle[xpath:://h4[@class='modal-title']/header]::The object does not contain text [Transaction Declined], The Actual Value ->[Transaction Approved | 2018-06-07T09:38:55 |]:: Screenshot: <span style='font-weight:bold;'>20180607150902.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:09:09</td>
+<td class='step-name'>Payments_PrintDownload::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [Payments_PrintDownload] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:09:10</td>
+<td class='step-name'>Payments_PrintDownload::InputData</td>
+<td class='step-details'>btnx[xpath:://div[@id='transactionResponsePopUp']/div/div/div/button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:09:22</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:09:23</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:09:27</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[10]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:09:28</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkDeclined[xpath:://div[text()='Declined']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:09:32</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:09:53</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>FMSStatus[xpath:://span[text()='CS63575163781886990']/../../td[5]]::Object [xpath:://span[text()='CS63575163781886990']/../../td[5]] not found in page:: Screenshot: <span style='font-weight:bold;'>20180607150953.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:09:57</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:09:58</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>btnGoBack[xpath:://button[text()='Go Back']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:02</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:03</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkCardNumber[xpath:://a[text()='CardNumber']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:07</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:08</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>chkSelect[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[1]/span[2]/label/input]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:08</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnDelete[xpath:://button[text()='Delete']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:13</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:14</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnConfirm[xpath:://button[text()='Confirm']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:18</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:19</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule deleted successfully] , Actual Value -> [Rule deleted successfully]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:24</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:24</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:29</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:29</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkArrow[xpath:://p[@class='name']/span[@class='arrow']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:31</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:33</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkLogOut[xpath:://a[text()='Log Out']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:35</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:35</td>
+<td class='step-name'>Logout_Logout::VerifyText</td>
+<td class='step-details'>txtNotification[id::messageText]::Expected Value ->[User logged out successfully.] , Actual Value -> [User logged out successfully.]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:37</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:39</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+<li class='collection-item test displayed active fail'>
+<div class='test-head'>
+<span class='test-name'>Verify that Txn gets Approved with a Card which is Reviewed </span>
+<span class='test-status label right capitalize outline fail'>fail</span>
+<span class='category-assigned hide '></span>
+</div>
+<div class='test-body'>
+<div class='test-info'>
+<span title='Test started time' class='test-started-time label green lighten-2 text-white'>2018-06-07 15:10:39</span>
+<span title='Test ended time' class='test-ended-time label red lighten-2 text-white'>2018-06-07 15:16:48</span>
+<span title='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 6m 9s+56ms</span>
+</div>
+<div class='test-desc'></div>
+<div class='test-attributes'>
+</div>
+<div class='test-steps'>
+<table class='bordered table-results'>
+<thead>
+<tr>
+<th>Status</th>
+<th>Timestamp</th>
+<th>StepName</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:48</td>
+<td class='step-name'>Browser::Open Browser</td>
+<td class='step-details'>CHROME::The CHROME browser was opened in Windows 10</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:53</td>
+<td class='step-name'>UI::Browse To</td>
+<td class='step-details'>Browse to https://portal-nv.edgepay-uat.com/login</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:10:53</td>
+<td class='step-name'>Login_Login::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Login_Login] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:53</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtUsername[name::userName]::Entered [AnkurAdmin] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:10:53</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>txtPassword[id::password]::Entered [1234@Asd] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:11:30</td>
+<td class='step-name'>Login_Login::InputData</td>
+<td class='step-details'>btnLogin[id::loginButton]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:11:34</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:11:35</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:11:39</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:11:42</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:11:44</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[18]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:12:05</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>txtCardNumber[id::entity2]::Object not found in page. Input operation [5499740000000057] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151205.png</span></td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:12:25</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>rdReview[id::declineOrReview2]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151225.png</span></td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:12:46</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnAddEntityValue[xpath:://button[text()='Add Entity Value']]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151246.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:12:50</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:12:51</td>
+<td class='step-name'>FMS_CardNumber::VerifyText</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Expected Value ->[Rule added successfully] , Actual Value -> [Unable to load details]:: Screenshot: <span style='font-weight:bold;'>20180607151251.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:12:56</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:12:56</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:01</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:01</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>lnkPayments[id::payments]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:02</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>lnkVirtualTerminalSale[id::virtualTerminalSale]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:09</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:09</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdProcessTxnViaCardDetails[id::processUsingCardDetails]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:09</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdGenerateToken-Yes[id::generateToken1]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:09</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtAmount[id::transactionAmount]::Entered [150.00] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:10</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlCurrency[xpath:://div[@id='currencyCode1']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:10</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectCurrencyUSD[xpath:://div[@id='currencyCode1']/ul/li[*]/a[text()='USD']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:10</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlDataSource[xpath:://div[@id='cardDataSource']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:10</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectDataSourceMail[xpath:://div[@id='cardDataSource']/ul/li[*]/a[text()='MAIL']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:11</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCardNumber[id::cardNumber]::Entered [5499740000000057] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:11</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCardExpirationDate[id::expirationDate]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:12</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectYear2020[xpath:://*[text()='2020']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:12</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectMonthDec[xpath:://*[text()='Dec']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:12</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCustomerName[id::cardHolderName]::Entered [Suman] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:13</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCVV2[id::cvv2]::Entered [999] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:13</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtTip[id::tip]::Entered [10] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:13</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingAddress[id::billingAddress]::Entered [123, ABC] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:13</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingZip[id::billingZip]::Entered [94404] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:14</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtBillingCity[id::billingCity]::Entered [FC] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:14</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlBillingState[xpath:://div[@id='billingState']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:14</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectBillingState-California[xpath:://div[@id='billingState']/ul/li[*]/a[text()='CALIFORNIA']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:15</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>rdIsRecurring[id::isRecurring]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:15</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>ddlBillingType[xpath:://div[@id='billingTypeList']/button]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:15</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>selectBillingType-Installment[xpath:://div[@id='billingTypeList']/ul/li[*]/a[text()='INSTALLMENT']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:15</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtCurrentPaymentCount[id::currentPaymentCount]::Entered [10] to edit box.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:16</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>txtPaymentCount[id::paymentCount]::Entered [15] to edit box.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:20</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:27</td>
+<td class='step-name'>FMS_VTSale::InputData</td>
+<td class='step-details'>btnSubmit[xpath:://button[text()='Submit']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:31</td>
+<td class='step-name'>FMS_VTSale::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_VTSale] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:33</td>
+<td class='step-name'>FMS_VTSale::VerifySubStringText</td>
+<td class='step-details'>verifyModalWindowTitle[xpath:://h4[@class='modal-title']/header]::The object contains text [Transaction Approved] , The Actual Value ->[Transaction Approved | 2018-06-07T09:43:28 |]</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:40</td>
+<td class='step-name'>Payments_PrintDownload::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [Payments_PrintDownload] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:41</td>
+<td class='step-name'>Payments_PrintDownload::InputData</td>
+<td class='step-details'>btnx[xpath:://div[@id='transactionResponsePopUp']/div/div/div/button[text()='×']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:51</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:51</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkFMS[id::fms]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:13:56</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:13:57</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkReviewed[xpath:://div[text()='Reviewed']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:14:01</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[18]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:14:22</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>FMSStatus[xpath:://span[text()='CS91307620059032097']/../../td[5]]::Object [xpath:://span[text()='CS91307620059032097']/../../td[5]] not found in page:: Screenshot: <span style='font-weight:bold;'>20180607151422.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:14:26</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:14:27</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>btnGoBack[xpath:://button[text()='Go Back']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:14:31</td>
+<td class='step-name'>FMS_Home::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_Home] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:14:31</td>
+<td class='step-name'>FMS_Home::InputData</td>
+<td class='step-details'>lnkCardNumber[xpath:://a[text()='CardNumber']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:14:36</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[12]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:14:57</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>chkSelect[xpath:://table[@class='rtable']/tbody/tr[*]/td[2]/span[text()='549974******0057']/../../td[1]/span[2]/label/input]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151457.png</span></td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:15:18</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnDelete[xpath:://button[text()='Delete']]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151518.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:15:22</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[14]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:15:43</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btnConfirm[xpath:://button[text()='Confirm']]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151543.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:15:47</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[16]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:16:08</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>msgNotification[xpath:://div[@class='modal-body']]::Object [xpath:://div[@class='modal-body']] not found in page:: Screenshot: <span style='font-weight:bold;'>20180607151608.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:16:13</td>
+<td class='step-name'>FMS_CardNumber::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [FMS_CardNumber] was started</td>
+</tr>
+<tr>
+<td class='status fail' title='fail' alt='fail'><i class='mdi-navigation-cancel'></i></td>
+<td class='timestamp'>15:16:34</td>
+<td class='step-name'>FMS_CardNumber::InputData</td>
+<td class='step-details'>btn×[xpath:://button[text()='×']]::Object not found in page. Input operation [clickon] was skipped. :: Screenshot: <span style='font-weight:bold;'>20180607151634.png</span></td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:16:39</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[4]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:16:39</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkArrow[xpath:://p[@class='name']/span[@class='arrow']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:16:41</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[6]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:16:42</td>
+<td class='step-name'>Logout_Logout::InputData</td>
+<td class='step-details'>lnkLogOut[xpath:://a[text()='Log Out']]::The object was clicked on.</td>
+</tr>
+<tr>
+<td class='status info' title='info' alt='info'><i class='mdi-action-info-outline'></i></td>
+<td class='timestamp'>15:16:44</td>
+<td class='step-name'>Logout_Logout::Begin InputData</td>
+<td class='step-details'>RowNumber[8]::Input data for business component [Logout_Logout] was started</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:16:45</td>
+<td class='step-name'>Logout_Logout::VerifyText</td>
+<td class='step-details'>txtNotification[id::messageText]::Expected Value ->[User logged out successfully.] , Actual Value -> [User logged out successfully.]</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:16:47</td>
+<td class='step-name'>Browser::Close Browser</td>
+<td class='step-details'>CHROME::The browser was closed successfully.</td>
+</tr>
+<tr>
+<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+<td class='timestamp'>15:16:48</td>
+<td class='step-name'>Browser::Close Session</td>
+<td class='step-details'>CHROME::The webdriver session was closed successfully.</td>
+</tr>
+</tbody>
+</table>
+<ul class='collapsible node-list' data-collapsible='accordion'>
+</ul>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id='test-details-wrapper' class='col s7'>
+<div class='card-panel vh100 details-view pin'>
+<h5 class='details-name'></h5>
+<div class='details-container'>
+</div>
+</div>
+</div>
+</div>
+<!-- /tests -->
+
+<!-- categories -->
+<div id='categories-view' class='row hide'>
+<div class='col s5'>
+<div class='card-panel heading'>
+<h5>Categories</h5>
+</div>
+<div class='card-panel filters'>
+<div class='search' alt='Search tests' title='Search tests'>
+<div class='input-field left'>
+<input id='searchTests' type='text' class='validate' placeholder='Search tests...'>
+</div>
+<i class='mdi-action-search icon'></i>
+</div>
+</div>
+<div class='card-panel no-padding-h no-padding-v vh100'>
+<div class='wrapper'>
+<ul id='cat-collection' class='cat-collection'>
+</ul>
+</div>
+</div>
+</div>
+<div id='cat-details-wrapper' class='col s7'>
+<div class='card-panel vh100 details-view pin'>
+<h5 class='cat-name'></h5>
+<div class='cat-container'>
+</div>
+</div>
+</div>
+</div>
+<!-- /categories -->
+
+<!-- testrunner logs -->
+<div id='testrunner-logs-view' class='row hide'>
+<div class='col s12'>
+<div class='card-panel'>
+<h5>TestRunner Logs</h5>
+</div>
+</div>
+</div>
+<!-- /testrunner logs -->
+
+</div>
+<!-- /container -->
+
+<!-- test dashboard counts setting -->
+<div id='test-count-setting' class='modal bottom-sheet'> 
+<div class='modal-content'> 
+<h5>Configure Tests Count Setting</h5> 
+<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+<br> 
+<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+<br> 
+<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+<label for='childNodes'>Child Tests Only</label> 
+</div> 
+<div class='modal-footer'> 
+<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+</div> 
+</div>
+<!-- /test dashboard counts setting -->
+
+<!-- filter for step status -->
+<div id='step-status-filter' class='modal bottom-sheet'> 
+<div class='modal-content'> 
+<h5>Select status</h5> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+<label for='step-dashboard-filter-pass'>Pass</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+<label for='step-dashboard-filter-fail'>Fail</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+<label for='step-dashboard-filter-fatal'>Fatal</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+<label for='step-dashboard-filter-error'>Error</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+<label for='step-dashboard-filter-warning'>Warning</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+<label for='step-dashboard-filter-skip'>Skipped</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+<label for='step-dashboard-filter-info'>Info</label> 
+<br> 
+<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+<label for='step-dashboard-filter-unknown'>Unknown</label> 
+</div>
+<div class='modal-footer'> 
+<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+</div> 
+</div>
+<!-- /filter for step status -->
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script> 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+<script src='https://cdn.rawgit.com/noelboss/featherlight/1.3.4/release/featherlight.min.js' type='text/javascript' charset='utf-8'></script>
+<script src='http://cdn.rawgit.com/anshooarora/extentreports/005d99e2f2716f6d749c77c65b57ca3c632c35a8/cdn/extent.js' type='text/javascript'></script>
+
+<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+<script>
+
+
+$(document).ready(function() {
+
+});
+
+
+</script>
+</body>
+</html>
