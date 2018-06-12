@@ -15,14 +15,15 @@ public class TC_MerchantAdd {
 	
 	public void ExecuteTest(String BrowserType, String strProgramDetails, String strTestEnvDetails) throws Exception 
 	{
-		
-		Login.run(BrowserType, 6);
-		Thread.sleep(4000);
-		
 		MerchantBoarding_MerchantAdd.run(4);
 		Thread.sleep(2000);
 		
 		MerchantBoarding_MerchantAdd.run(6);
+		Thread.sleep(2000);
+		
+		driver=Browser.driver;
+		txtMID = driver.findElement(By.id("mid")).getAttribute("value");
+		ExcelUtil.storeCellData("MerchantBoarding_MerchantSearch", txtMID, 5, 3);
 		Thread.sleep(2000);
 		
 		MerchantBoarding_MerchantAdd.run(8);
@@ -62,18 +63,6 @@ public class TC_MerchantAdd {
 		Thread.sleep(2000);
 		
 		MerchantBoarding_MerchantAdd.run(32);
-		Thread.sleep(2000);
-		
-		Logout.run(4);
-		Thread.sleep(2000);
-		
-		Logout.run(6);
-		Thread.sleep(2000);
-		
-		Logout.run(8);
-		Thread.sleep(2000);
-		
-		Browser.Close();
 		Thread.sleep(2000);
 		
 		}

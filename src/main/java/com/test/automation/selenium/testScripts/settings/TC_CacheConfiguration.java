@@ -1,6 +1,11 @@
 package com.test.automation.selenium.testScripts.settings;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 
@@ -106,18 +111,20 @@ public static WebDriver driver=Browser.driver;
 			Settings_Cache.run(40);
 			Thread.sleep(2000);
 			
-			Settings_Cache.run(36);
-			Thread.sleep(2000);
+			driver=Browser.driver;
 			
-			Settings_Cache.run(40);
-			Thread.sleep(2000);
+			List<WebElement> Replenish = driver.findElements(By.xpath("//button[text()='Replenish Cache']"));
 			
-			Settings_Cache.run(38);
-			Thread.sleep(2000);
+			for(int i=0;i<Replenish.size();i++){
+				
+				Replenish.get(i).click();
+				Thread.sleep(2000);
+				
+				Settings_Cache.run(40);
+				Thread.sleep(2000);
+			}
 			
-			Settings_Cache.run(40);
-			Thread.sleep(2000);
-			
+				
 			}catch(Exception ex){
 			
 		}

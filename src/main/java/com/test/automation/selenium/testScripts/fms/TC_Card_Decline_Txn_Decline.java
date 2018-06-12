@@ -52,7 +52,7 @@ public class TC_Card_Decline_Txn_Decline {
 		
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
-		ExcelUtil.storeCellData("FMS_Home", "xpath:://span[text()='"+txtTxnID+"']/../../td[5]", 1, 9);
+		ExcelUtil.storeCellData("FMS_Home", "xpath:://span[text()='"+txtTxnID+"']/../../td[5]/span", 1, 9);
 		Thread.sleep(2000);
 		
 		VTDownloadPrint.run(12);
@@ -61,7 +61,7 @@ public class TC_Card_Decline_Txn_Decline {
 		//***********************************
 		
 		FMS_Home.run(4);
-		Thread.sleep(2000);
+		Thread.sleep(30000);
 		
 		FMS_Home.run(10);
 		Thread.sleep(2000);
