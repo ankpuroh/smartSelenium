@@ -33,11 +33,12 @@ public class TC_VTRefund {
 		
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
+		Thread.sleep(2000);
 		ExcelUtil.storeCellData("Payments_VTRefund", txtTxnID, 5, 2);
 		ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 10, 4);
 		Thread.sleep(2000);
 		
-		VTDownloadPrint.run(10);
+		VTDownloadPrint.run(12);
 		Thread.sleep(2000);
 		
 		VTRefund.run(4);
