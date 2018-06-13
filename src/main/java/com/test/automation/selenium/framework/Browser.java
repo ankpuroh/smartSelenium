@@ -150,7 +150,7 @@ public class Browser {
 				System.out.println("\nI am in Linux \n");
 				// options.setProxy(proxy);
 				options.addArguments("window-size=1920,1080");
-				options.addArguments("headless");
+				//options.addArguments("headless");
 				options.addArguments("ignore-certificate-errors");
 				options.addArguments("disable-gpu");
 				// options.addArguments("--screenshot");
