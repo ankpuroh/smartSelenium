@@ -52,7 +52,7 @@ public class Browser {
 		DesiredCapabilities capabilities;
 
 		Proxy proxy = new Proxy();
-		if (!System.getProperty("os-name").equalsIgnoreCase("Linux")) {
+		if (!System.getProperty("os.name").equalsIgnoreCase("Linux")) {
 			proxy.setHttpProxy("172.25.8.17:8080");
 			proxy.setSslProxy("172.25.8.17:8080");
 		}
@@ -200,7 +200,7 @@ public class Browser {
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
 
-				if (!System.getProperty("os-name").equalsIgnoreCase("Linux")) {
+				if (!System.getProperty("os.name").equalsIgnoreCase("Linux")) {
 					htmlunitcapability.setCapability(CapabilityType.PROXY, proxy);
 				}
 				driver = new HtmlUnitDriver(htmlunitcapability);
