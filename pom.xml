@@ -124,6 +124,48 @@
 					<include>Driver.xlsx</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_QA_CHROME.xlsx</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_QA_CHROMEHEADLESS.xlsx</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_UAT_CHROME.xlsx</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_UAT_CHROMEHEADLESS.xlsx</include>
+				</includes>
+			</resource>	
+												<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_UATNV_CHROME.xlsx</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_UATNV_CHROMEHEADLESS.xlsx</include>
+				</includes>
+			</resource>							
 		</resources>
 		
 	</build>
