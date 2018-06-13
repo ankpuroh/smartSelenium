@@ -30,11 +30,16 @@ public class TC_VTSale_None {
 		VTSale.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("Payments_VTSale", "text::"+txtTxnID, 12, 38);
 		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTSale.run(12);
 		Thread.sleep(2000);

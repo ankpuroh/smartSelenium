@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 import com.test.automation.selenium.framework.ExcelUtil;
+import com.test.automation.selenium.framework.logResult;
 
 
 public class TC_Card_Decline_Txn_Decline {
@@ -50,10 +51,15 @@ public class TC_Card_Decline_Txn_Decline {
 		FMS_Sale.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("FMS_Home", "xpath:://span[text()='"+txtTxnID+"']/../../td[5]/span", 1, 9);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTDownloadPrint.run(12);
 		Thread.sleep(2000);		

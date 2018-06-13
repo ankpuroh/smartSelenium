@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 import com.test.automation.selenium.framework.ExcelUtil;
+import com.test.automation.selenium.framework.logResult;
 
 public class TC_UserAdd {
 	
@@ -20,10 +21,15 @@ String txtUsername = null;
 			AccountManager_UserAdd.run(4);
 			Thread.sleep(2000);
 			
+			try{
 			driver=Browser.driver;
 			txtUsername = driver.findElement(By.id("userName")).getAttribute("value");
 			ExcelUtil.storeCellData("AccountManager_UserSearch", txtUsername, 5, 3);
 			Thread.sleep(2000);
+			}
+			catch(Exception e){
+				logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+			}
 			
 			AccountManager_UserAdd.run(6);
 			Thread.sleep(2000);

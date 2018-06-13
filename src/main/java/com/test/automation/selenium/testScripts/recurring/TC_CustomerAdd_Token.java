@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 import com.test.automation.selenium.framework.ExcelUtil;
+import com.test.automation.selenium.framework.logResult;
 
 public class TC_CustomerAdd_Token {
 	
@@ -25,10 +26,15 @@ public static WebDriver driver=Browser.driver;
 			Recurring_CustomerAdd.run(10);
 			Thread.sleep(2000);
 			
+			try{
 			driver=Browser.driver;
 			txtCustNo = driver.findElement(By.id("customerNumber")).getAttribute("value");
 			ExcelUtil.storeCellData("Recurring_CustomerAdd", "text::"+txtCustNo, 24, 68);
 			Thread.sleep(2000);
+			}
+			catch(Exception e){
+				logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+			}
 			
 			Recurring_CustomerAdd.run(12);
 			Thread.sleep(2000);

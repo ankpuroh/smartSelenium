@@ -33,11 +33,16 @@ public class TC_VTACH_AR {
 		VTACH.run(12);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("Payments_VTACH", "text::"+txtTxnID, 14, 43);
 		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTACH.run(14);
 		Thread.sleep(2000);

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
+import com.test.automation.selenium.framework.logResult;
 
 import org.openqa.selenium.Keys;
 
@@ -34,10 +35,15 @@ public static WebDriver driver=Browser.driver;
 			TokenManager_RequestToken.run(14);
 			Thread.sleep(2000);
 			
+			try{
 			driver=Browser.driver;
 			WebElement txtTokenNumber = driver.findElement(By.id("cardt_update_card_number"));
 			txtTokenNumber.sendKeys(Keys.chord(Keys.CONTROL, "v"));
 			Thread.sleep(2000);
+			}
+			catch(Exception e){
+				logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+			}
 			
 			TokenManager_RequestToken.run(16);
 			Thread.sleep(2000);

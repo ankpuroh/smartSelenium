@@ -30,6 +30,7 @@ public class TC_VTCaptureAdjust_Auth {
 		VTAuth.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("Payments_VTCaptureAdjust", txtTxnID, 5, 2);
@@ -39,6 +40,10 @@ public class TC_VTCaptureAdjust_Auth {
 		ExcelUtil.storeCellData("Payments_VTCaptureAdjust", "text::"+txtTxnID, 20, 14);
 		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}		
 		
 		VTCaptureAdjust.run(16);
 		Thread.sleep(2000);

@@ -34,11 +34,16 @@ public class TC_VTAuth_Level3 {
 		VTAuth.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("Payments_VTAuth", "text::"+txtTxnID, 12, 32);
 		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTAuth.run(12);
 		Thread.sleep(2000);

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 import com.test.automation.selenium.framework.ExcelUtil;
+import com.test.automation.selenium.framework.logResult;
 
 public class TC_ODFIAdd {
 	
@@ -23,9 +24,14 @@ public class TC_ODFIAdd {
 		ODFI_Add.run(6);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtODFIValue = driver.findElement(By.id("odfiCode")).getAttribute("value");
 		xpathODFICode = "xpath:://div[@id='searchResultTable']/table/tbody/tr[*]/td[1]/span[text()='"+txtODFIValue+"']";
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		ExcelUtil.storeCellData("ODFI_Update", xpathODFICode, 1, 3); // XPATH for ODFI Code
 		ExcelUtil.storeCellData("ODFI_Update", xpathODFICode+"/../../td[2]", 1, 4); // XPATH for ODFI Name
@@ -35,10 +41,15 @@ public class TC_ODFIAdd {
 		ExcelUtil.storeCellData("ODFI_Update", "text::"+txtODFIValue, 6, 3);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtCutoffTimeValue = driver.findElement(By.id("cutoffTime")).getAttribute("value");
 		ExcelUtil.storeCellData("ODFI_Update", "text::"+txtCutoffTimeValue, 6, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		ODFI_Add.run(8);
 		Thread.sleep(2000);

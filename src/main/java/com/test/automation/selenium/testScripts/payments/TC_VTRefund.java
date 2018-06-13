@@ -16,7 +16,6 @@ public class TC_VTRefund {
 			
 	public void ExecuteTest(String BrowserType, String strProgramDetails, String strTestEnvDetails) throws Exception 
 	{
-		try {
 		Login.run(BrowserType, 6);
 		Thread.sleep(4000);
 		
@@ -32,12 +31,17 @@ public class TC_VTRefund {
 		VTSale.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		Thread.sleep(2000);
 		ExcelUtil.storeCellData("Payments_VTRefund", txtTxnID, 5, 2);
 		ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 10, 4);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTDownloadPrint.run(12);
 		Thread.sleep(2000);
@@ -63,12 +67,18 @@ public class TC_VTRefund {
 		VTRefund.run(8);
 		Thread.sleep(2000);
 		
-		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
-		ExcelUtil.storeCellData("Payments_VTRefund", txtTxnID, 5, 2);
-		ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 16, 10);
-		ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 20, 4);
-		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
-		Thread.sleep(2000);
+		try{
+			driver=Browser.driver;
+			txtTxnID = driver.findElement(By.id("transaction_id")).getText();
+			ExcelUtil.storeCellData("Payments_VTRefund", txtTxnID, 5, 2);
+			ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 16, 10);
+			ExcelUtil.storeCellData("Payments_VTRefund", "text::"+txtTxnID, 20, 4);
+			ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
+			Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTRefund.run(16);
 		Thread.sleep(2000);
@@ -118,12 +128,6 @@ public class TC_VTRefund {
 		Thread.sleep(2000);
 		
 		Browser.Close();
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-			logResult.logTest("Test Scripts", "TC_VTRefund.java", "FAIL", "", "Exception Occured : " + e.getMessage(), "");
-			Browser.Close();
-		}
 		
 	}
 

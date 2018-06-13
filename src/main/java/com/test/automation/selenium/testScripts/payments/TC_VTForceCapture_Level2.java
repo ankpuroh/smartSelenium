@@ -34,11 +34,16 @@ public class TC_VTForceCapture_Level2 {
 		VTForceCapture.run(10);
 		Thread.sleep(2000);
 		
+		try{
 		driver=Browser.driver;
 		txtTxnID = driver.findElement(By.id("transaction_id")).getText();
 		ExcelUtil.storeCellData("Payments_VTForceCapture", "text::"+txtTxnID, 12, 33);
 		ExcelUtil.storeCellData("Payments_Reports", txtTxnID, 5, 6);
 		Thread.sleep(2000);
+		}
+		catch(Exception e){
+			logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+		}
 		
 		VTForceCapture.run(12);
 		Thread.sleep(2000);

@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import com.test.automation.selenium.businesscomponents.*;
 import com.test.automation.selenium.framework.Browser;
 import com.test.automation.selenium.framework.ExcelUtil;
+import com.test.automation.selenium.framework.logResult;
 
 public class TC_BPAdd {
 	
@@ -29,10 +30,15 @@ String txtBP = null;
 			Recurring_BPAdd.run(10);
 			Thread.sleep(2000);
 			
+			try{
 			driver=Browser.driver;
 			txtBP = driver.findElement(By.id("billingPlan")).getAttribute("value");
 			ExcelUtil.storeCellData("Recurring_BPUpdate", txtBP, 3, 1);
 			Thread.sleep(2000);
+			}
+			catch(Exception e){
+				logResult.logTest("Test Execution", "Status", "INFO", "Exception occurred!!!", e.getMessage(), "");
+			}
 			
 			Recurring_BPAdd.run(12);
 			Thread.sleep(2000);
