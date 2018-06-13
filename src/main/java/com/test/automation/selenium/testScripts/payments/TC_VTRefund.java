@@ -16,6 +16,7 @@ public class TC_VTRefund {
 			
 	public void ExecuteTest(String BrowserType, String strProgramDetails, String strTestEnvDetails) throws Exception 
 	{
+		try {
 		Login.run(BrowserType, 6);
 		Thread.sleep(4000);
 		
@@ -117,6 +118,12 @@ public class TC_VTRefund {
 		Thread.sleep(2000);
 		
 		Browser.Close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			logResult.logTest("Test Scripts", "TC_VTRefund.java", "FAIL", "", "Exception Occured : " + e.getMessage(), "");
+			Browser.Close();
+		}
 		
 	}
 
