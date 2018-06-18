@@ -165,7 +165,56 @@
 				<includes>
 					<include>Driver_UATNV_CHROMEHEADLESS.xlsx</include>
 				</includes>
-			</resource>							
+			</resource>	
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_USER.xlsx</include>
+				</includes>
+			</resource>	
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_ACH.xlsx</include>
+				</includes>
+			</resource>	
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_CARD.xlsx</include>
+				</includes>
+			</resource>		
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_FMS.xlsx</include>
+				</includes>
+			</resource>	
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_MERCHANTBOARDING.xlsx</include>
+				</includes>
+			</resource>								
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_REPORTING.xlsx</include>
+				</includes>
+			</resource>					
+			<resource>
+				<directory>${basedir}</directory>
+				<targetPath>${basedir}/target</targetPath>
+				<includes>
+					<include>Driver_WEBGATEWAY.xlsx</include>
+				</includes>
+			</resource>	
 		</resources>
 		
 	</build>
