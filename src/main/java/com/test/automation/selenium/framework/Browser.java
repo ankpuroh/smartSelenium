@@ -198,6 +198,7 @@ public class Browser {
 				htmlunitcapability.setJavascriptEnabled(true);
 				// htmlunitcapability.acceptInsecureCerts();
 				htmlunitcapability.setAcceptInsecureCerts(true);
+				htmlunitcapability.setJavascriptEnabled(true);
 				// htmlunitcapability.setVersion(org.openqa.selenium.remote.BrowserType.HTMLUNIT);
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
