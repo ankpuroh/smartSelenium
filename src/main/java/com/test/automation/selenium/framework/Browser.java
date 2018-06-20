@@ -197,11 +197,12 @@ public class Browser {
 
 			case "HTMLUNIT":
 				DesiredCapabilities htmlunitcapability = DesiredCapabilities.htmlUnit();
-				htmlunitcapability.setJavascriptEnabled(true);
+				//htmlunitcapability.setJavascriptEnabled(true);
 				// htmlunitcapability.acceptInsecureCerts();
 				htmlunitcapability.setAcceptInsecureCerts(true);
 				htmlunitcapability.setJavascriptEnabled(true);
 				java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.WARNING);
+				java.util.logging.Logger.getLogger("org.apache.commons.httpclient").setLevel(Level.WARNING);
 				// htmlunitcapability.setVersion(org.openqa.selenium.remote.BrowserType.HTMLUNIT);
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
@@ -212,7 +213,7 @@ public class Browser {
 				driver = new HtmlUnitDriver(htmlunitcapability);
 
 				if (driver != null) {
-					logResult.logTest("Browser", "Open Browser", "PASS", "HTMLUNIT", "The HTMLUNIT browser was opened.",
+					logResult.logTest("Browser", "Open Browser", "PASS", "HTMLUNIT", "The HTMLUNIT driver was opened.",
 							"");
 				} else
 					logResult.logTest("Browser", "Open Browser", "PASS", "HTMLUNIT",
