@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -33,6 +34,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
+import org.testng.log4testng.Logger;
 
 public class Browser {
 
@@ -199,7 +201,7 @@ public class Browser {
 				// htmlunitcapability.acceptInsecureCerts();
 				htmlunitcapability.setAcceptInsecureCerts(true);
 				htmlunitcapability.setJavascriptEnabled(true);
-				
+				java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.WARNING);
 				// htmlunitcapability.setVersion(org.openqa.selenium.remote.BrowserType.HTMLUNIT);
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
