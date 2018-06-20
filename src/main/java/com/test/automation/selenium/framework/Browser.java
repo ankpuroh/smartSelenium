@@ -202,7 +202,7 @@ public class Browser {
 				htmlunitcapability.setAcceptInsecureCerts(true);
 				htmlunitcapability.setJavascriptEnabled(true);
 				java.util.logging.Logger.getLogger("com.gargoylesoftware.htmlunit").setLevel(Level.WARNING);
-				java.util.logging.Logger.getLogger("org.apache.commons.httpclient").setLevel(Level.WARNING);
+				java.util.logging.Logger.getLogger("org.apache.http.wire").setLevel(Level.WARNING);
 				// htmlunitcapability.setVersion(org.openqa.selenium.remote.BrowserType.HTMLUNIT);
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
