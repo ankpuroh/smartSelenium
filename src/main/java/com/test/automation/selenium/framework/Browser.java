@@ -199,6 +199,7 @@ public class Browser {
 				// htmlunitcapability.acceptInsecureCerts();
 				htmlunitcapability.setAcceptInsecureCerts(true);
 				htmlunitcapability.setJavascriptEnabled(true);
+				
 				// htmlunitcapability.setVersion(org.openqa.selenium.remote.BrowserType.HTMLUNIT);
 				// htmlunitcapability.setBrowserName("htmlunit");
 				// driver = new HtmlUnitDriver(htmlunitcapability);
@@ -1438,11 +1439,13 @@ public class Browser {
 				isObjectPresent = false;
 				element = null;
 				e.printStackTrace();
+				System.out.println(driver.getPageSource());
 
 			} catch (ElementNotVisibleException e) {
 				isObjectPresent = false;
 				element = null;
 				e.printStackTrace();
+				System.out.println(driver.getPageSource());
 			} catch (TimeoutException e) {
 				isObjectPresent = false;
 				element = null;
