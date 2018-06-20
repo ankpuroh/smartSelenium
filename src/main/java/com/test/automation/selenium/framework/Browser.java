@@ -110,6 +110,8 @@ public class Browser {
 				options.addArguments("headless");
 				options.addArguments("ignore-certificate-errors");
 				options.addArguments("disable-gpu");
+		        options.addArguments("--no-sandbox");
+		        options.addArguments("--disable-dev-shm-usage");
 				// options.addArguments("--screenshot");
 				// options.addArguments("--remote-debugging-port=9222");
 
